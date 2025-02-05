@@ -12,6 +12,7 @@ async function Userdetails(req:NextRequest,res:NextResponse){
             headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
           });
           console.log(userdata.data)
+          console.log(userdata.data)
           return NextResponse.json({msg:"user details are found"},{status:200})
      }catch(error){
         console.log("github server error " ,error)

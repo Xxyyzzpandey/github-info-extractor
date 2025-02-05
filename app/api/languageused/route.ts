@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 async function Handler(req:NextRequest,res:NextResponse){
     const {username}=await req.json();
+    console.log(username)
     try{
         const response=await axios.get(`https://api.github.com/users/${username}/repos`,{
             headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
