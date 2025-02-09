@@ -2,12 +2,8 @@
 
 import React from "react";
 import { RepoCard } from "./repocard";
-import { userdet } from "@/app/recoil/atoms";
 
 const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location,language,stars,reponame,urllink}:any) => {
-
-    const us=useRecoilValue(userdet)
-    
 
     const Repo=()=>{
     return<>

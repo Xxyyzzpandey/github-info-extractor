@@ -2,10 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { userdet } from "@/app/recoil/atoms";
 import { useRouter } from "next/navigation";
 import UserProfile from "./profile";
-import {Userdetails} from "@/app/recoil/atoms"
+import { useUserStore } from "../../store/store";
 
 const numStars = 150; // Number of stars
 
@@ -13,20 +12,19 @@ const StarryBackground = () => {
   const [stars, setStars] = useState<{ x: number; y: number }[]>([]);
   const [username,setusername]=useState("");
   const [loading,setloading]=useState(false);
-    const router =useRouter();
-  const [user,userdetails]=useState<Userdetails>();
+  const router =useRouter();
+  const {setUserDetails}=useUserStore()
 
   const handleclick=async (e:any)=>{
          e.preventDefault();
+         setloading(true);
         try{
             const response=await axios.post("/api/details",{username});
             console.log(response)
             if(response.status===200){
-              console.log("in if conldld")
-              userdetails(response.data)
-              setloading(true);
+              setUserDetails(response.data)
               console.log("second data ",response.data.avatar_url)
-              //router.push("/pages/details");
+              router.push("/pages/details");
             }else {
               console.error("Unexpected response:", response);
               alert("Unexpected error occurred");
@@ -39,6 +37,8 @@ const StarryBackground = () => {
             } else {
               alert("Network error or server issue");
             }
+        }finally{
+          setloading(false)
         }
   }
 
@@ -57,7 +57,7 @@ const StarryBackground = () => {
 
    if(loading===true){
     return <>
-        <UserProfile name={user?.name} username={user?.username} bio={user?.bio} following={user?.following} followers={user?.followers} activedays={user?.activedays} language={user?.language} location={user?.location } avatar={user?.avatar_url} stars={user?.stars} Repositories={user?.public_repos}/>
+       loading.....
     </>
    }
 

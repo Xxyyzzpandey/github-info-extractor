@@ -5,7 +5,7 @@ import UserProfile from "./components/ui/profile"
 export default function Home() {
   return (
     <>
-    <UserProfile/>
+    <SecondPage/>
     </>
   );
 }

@@ -1,19 +1,17 @@
 "use client"
 
-import { userdet } from "@/app/recoil/atoms"
-import { useRecoilValue } from "recoil"
 import UserProfile from "../../components/ui/profile"
- 
+import { useUserStore } from "@/app/store/store" 
 
  export default function UserDetails(){
 
-     const userd=useRecoilValue(userdet)
-     
-    if(!userd){
+     const {userDetails}=useUserStore();
+    
+    if(!userDetails){
         return<>loading userdetails ....</>
     }
 
  return<>
-          <UserProfile name={userd?.name} username={userd?.username} bio={userd?.bio} following={userd?.following} activedays={userd?.activedays} language={userd?.language} location={userd?.location} avatar={userd?.avatar_url} stars={userd?.stars}/>
+          <UserProfile name={userDetails?.login} username={userDetails?.username} bio={userDetails?.bio} followers={userDetails.followers} following={userDetails.following} activedays={userDetails?.activedays} language={userDetails?.language} location={userDetails?.location} avatar={userDetails?.avatar_url} stars={userDetails?.stars} repositories={userDetails.public_repos}/>
     </>
  }
