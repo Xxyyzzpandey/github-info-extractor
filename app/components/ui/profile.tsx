@@ -1,9 +1,14 @@
 "use client";
 
 import React from "react";
+import { RepoCard } from "./repocard";
+import { userdet } from "@/app/recoil/atoms";
 
-const UserProfile = () => {
-      
+const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location,language,stars,reponame,urllink}:any) => {
+
+    const us=useRecoilValue(userdet)
+    
+
     const Repo=()=>{
     return<>
         <div className="mt-6 text-center">
@@ -30,7 +35,7 @@ const UserProfile = () => {
       {/* Avatar Section */}
       <div className="relative">
         <img
-          src={user.avatar}
+          src={avatar}
           alt="User Avatar"
           className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-blue-500 shadow-lg"
         />
@@ -38,41 +43,45 @@ const UserProfile = () => {
 
       {/* User Details */}
       <div className="mt-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold">{user.name}</h2>
-        <p className="text-gray-400 text-sm md:text-base">{user.username}</p>
-        <p className="mt-2 text-gray-300 text-sm md:text-lg">{user.bio}</p>
+        <h2 className="text-2xl md:text-3xl font-bold">{name}</h2>
+        <p className="text-gray-400 text-sm md:text-base">{username}</p>
+        <p className="mt-2 text-gray-300 text-sm md:text-lg">{bio}</p>
       </div>
 
       {/* User Stats */}
       <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-          <p className="text-lg font-bold">{user.followers}</p>
+          <p className="text-lg font-bold">{followers}</p>
           <p className="text-sm text-gray-400">Followers</p>
         </div>
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-          <p className="text-lg font-bold">{user.activeDays}</p>
+          <p className="text-lg font-bold">{following}</p>
+          <p className="text-sm text-gray-400">following</p>
+        </div>
+        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
+          <p className="text-lg font-bold">{activedays}</p>
           <p className="text-sm text-gray-400">Active Days</p>
         </div>
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-          <p className="text-lg font-bold">{user.repositories}</p>
+          <p className="text-lg font-bold">{repositories}</p>
           <p className="text-sm text-gray-400">Repositories</p>
         </div>
         <div className="bg-gray-800 p-4 rounded-lg shadow-md col-span-2 md:col-span-1">
-          <p className="text-lg font-bold">{user.location}</p>
+          <p className="text-lg font-bold">{location}</p>
           <p className="text-sm text-gray-400">Location</p>
         </div>
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-          <p className="text-lg font-bold">{user.activeDays}</p>
+          <p className="text-lg font-bold">{language}</p>
           <p className="text-sm text-gray-400">Most used language</p>
         </div>
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-          <p className="text-lg font-bold">{user.activeDays}</p>
+          <p className="text-lg font-bold">{stars}</p>
           <p className="text-sm text-gray-400">total stars</p>
         </div>
       </div>
       <div className="mt-6 text-center">
         <h2>Repositories Name : Link</h2>
-        <p className="mt-2 text-gray-300 text-sm md:text-lg">Name:{user.location}  <a className="text-blue-600" href={user.username}>{user.username}kjfddddddddddddddddddddddjkkkkkkkkkkk</a></p>
+        <RepoCard reponame={reponame} urllink={urllink} />
       </div>
     </div>
   );
