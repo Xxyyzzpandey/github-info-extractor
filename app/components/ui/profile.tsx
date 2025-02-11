@@ -2,29 +2,10 @@
 
 import React from "react";
 import { RepoCard } from "./repocard";
+import { LangCard } from "./repocard";
+import Chart from "../charts"
 
-const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location,language,stars,reponame,urllink}:any) => {
-
-    const Repo=()=>{
-    return<>
-        <div className="mt-6 text-center">
-        <h2>Repositories Name : Link</h2>
-        <p className="mt-2 text-gray-300 text-sm md:text-lg">Name:{user.location}  <a className="text-blue-600" href={user.username}>{user.username}kjfddddddddddddddddddddddjkkkkkkkkkkk</a></p>
-      </div>
-    </>
-}
-
-  // Dummy User Data (Replace with real data from API)
-  const user = {
-    avatar: "https://via.placeholder.com/150", // Replace with real avatar URL
-    name: "John Doe",
-    username: "@johndoe",
-    bio: "Software Engineer | Open Source Contributor | Tech Enthusiast",
-    followers: 1234,
-    activeDays: 250,
-    repositories: 42,
-    location: "San Francisco, CA",
-  };
+const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location="not mentioned",language,stars,reponame,urllink,createdate,updatedate}:any) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">
@@ -67,17 +48,24 @@ const UserProfile = ({avatar,name,username,bio,followers,following,activedays,re
           <p className="text-sm text-gray-400">Location</p>
         </div>
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-          <p className="text-lg font-bold">{language}</p>
-          <p className="text-sm text-gray-400">Most used language</p>
-        </div>
-        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
           <p className="text-lg font-bold">{stars}</p>
           <p className="text-sm text-gray-400">total stars</p>
         </div>
+        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
+          <p className="text-lg font-bold">{createdate}</p>
+          <p className="text-sm text-gray-400">Acount Created At</p>
+        </div>
+        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
+          <p className="text-lg font-bold">{updatedate}</p>
+          <p className="text-sm text-gray-400">Account Last updated</p>
+        </div>
       </div>
       <div className="mt-6 text-center">
-        <h2>Repositories Name : Link</h2>
-        <RepoCard reponame={reponame} urllink={urllink} />
+      <h2>Overall Language Stats </h2>
+       <LangCard/>
+       <Chart/>
+        <h2>Public Repositories </h2>
+        <RepoCard/>
       </div>
     </div>
   );
