@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import UserProfile from "./profile";
-import { useUserStore } from "../../store/store";
+import { useLangStore, useUserStore } from "../../store/store";
+import { useRepoStore } from "../../store/store";
+
 
 const numStars = 150; // Number of stars
 
@@ -14,26 +16,34 @@ const StarryBackground = () => {
   const [loading,setloading]=useState(false);
   const router =useRouter();
   const {setUserDetails}=useUserStore()
+  const {setRepoDetails}=useRepoStore()
+  const {setLangDetails}=useLangStore()
 
   const handleclick=async (e:any)=>{
          e.preventDefault();
          setloading(true);
         try{
-            const response=await axios.post("/api/details",{username});
-            console.log(response)
-            if(response.status===200){
-              setUserDetails(response.data)
-              console.log("second data ",response.data.avatar_url)
+            const [response1,response2,response3]=await axios.all([
+              await axios.post("/api/details",{username}),
+              await axios.post("/api/repoinfo",{username}),
+              await axios.post("/api/languageused",{username})
+            ])
+            console.log(response1)
+            if(response1.status===200 && response2.status===200 && response3.status===200){
+              setUserDetails(response1.data)
+              setRepoDetails(response2.data)
+              setLangDetails(response3.data)
+              console.log(response2.data)
               router.push("/pages/details");
             }else {
-              console.error("Unexpected response:", response);
+              console.error("Unexpected response:", response1);
               alert("Unexpected error occurred");
             }
         }catch(error:any){
             console.error("Request failed:", error);
-            if (error.response) {
-              console.log("Error Response:", error.response);
-              alert(error.response.data.error || "Something went wrong");
+            if (error.response1) {
+              console.log("Error Response:", error.response1);
+              alert(error.response1.data.error || "Something went wrong");
             } else {
               alert("Network error or server issue");
             }
