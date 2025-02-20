@@ -14,11 +14,13 @@ export function BackgroundLinesDemo() {
     <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white 
       text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
       font-sans py-4 sm:py-6 md:py-8 lg:py-12 font-bold tracking-tight">
-      Sanjana Airlines, <br /> Sanjana Textiles.
+      Github Infomation , <br /> Gathering.
     </h2>
 
     <p className="max-w-2xl text-center text-sm sm:text-base md:text-lg lg:text-xl text-neutral-700 dark:text-neutral-400 px-3 sm:px-6 md:px-10">
-      Get the best advice from our experts, including expert artists, painters, marathon enthusiasts, and RDX, totally free.
+       A GitHub Information Gathering Website allows users to fetch and analyze GitHub profiles, repositories, contributions, 
+       and languages using the GitHub API. It can display insights like most
+       used languages, activity heatmaps, achievements, and repository stats to evaluate a developer’s coding footprint
     </p>
 
     <div className="mt-6 sm:mt-8 md:mt-10">

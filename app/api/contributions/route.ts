@@ -9,15 +9,23 @@ async function Handler(req:NextRequest,res:NextResponse){
         const response=await axios.get(`https://api.github.com/users/${username}/events`,{
             headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
           });
-          console.log(response)
-          return NextResponse.json({msg:"repo info "},{status:200});
-    }catch(error){
-        console.log("github server error " ,error)
-        return NextResponse.json(
-            { error: "Failed to fetch repo details"},
-            { status: 500 }
+          const events =  response.data;
+
+          if (!Array.isArray(events)) {
+            console.log("Error fetching events.");
+            return;
+          }
+        
+          // Extract unique dates of activity
+          const activeDays = new Set(
+            events.map(event => new Date(event.created_at).toISOString().split("T")[0])
           );
-     }
-}
+        
+          console.log(`${username} was active on ${activeDays.size} different days.`);
+        }catch(error){
+           alert("error in fetching")
+           return
+        }
+    }
 
 export {Handler as POST }

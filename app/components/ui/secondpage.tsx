@@ -3,10 +3,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import UserProfile from "./profile";
 import { useLangStore, useUserStore } from "../../store/store";
 import { useRepoStore } from "../../store/store";
-
+import Spinner from "./loading"
 
 const numStars = 150; // Number of stars
 
@@ -23,6 +22,10 @@ const StarryBackground = () => {
          e.preventDefault();
          setloading(true);
         try{
+            if(!username){
+              alert("username is required")
+              return;
+            }
             const [response1,response2,response3]=await axios.all([
               await axios.post("/api/details",{username}),
               await axios.post("/api/repoinfo",{username}),
@@ -67,7 +70,7 @@ const StarryBackground = () => {
 
    if(loading===true){
     return <>
-       loading.....
+       <Spinner/>
     </>
    }
 
