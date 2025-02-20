@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useLangStore, useUserStore } from "../../store/store";
+import { useContributionStore, useLangStore, useUserStore } from "../../store/store";
 import { useRepoStore } from "../../store/store";
 import Spinner from "./loading"
 
@@ -17,6 +17,7 @@ const StarryBackground = () => {
   const {setUserDetails}=useUserStore()
   const {setRepoDetails}=useRepoStore()
   const {setLangDetails}=useLangStore()
+  const {setContributionDetails}=useContributionStore();
 
   const handleclick=async (e:any)=>{
          e.preventDefault();
@@ -26,17 +27,19 @@ const StarryBackground = () => {
               alert("username is required")
               return;
             }
-            const [response1,response2,response3]=await axios.all([
+            const [response1,response2,response3,response4]=await axios.all([
               await axios.post("/api/details",{username}),
               await axios.post("/api/repoinfo",{username}),
-              await axios.post("/api/languageused",{username})
+              await axios.post("/api/languageused",{username}),
+              await axios.post("/api/contributions", {username})
             ])
             console.log(response1)
-            if(response1.status===200 && response2.status===200 && response3.status===200){
+            if(response1.status===200 && response2.status===200 && response3.status===200 && response4.status===200){
               setUserDetails(response1.data)
               setRepoDetails(response2.data)
               setLangDetails(response3.data)
-              console.log(response2.data)
+              setContributionDetails(response4.data);
+              console.log("from second pafe",response4.data)
               router.push("/pages/details");
             }else {
               console.error("Unexpected response:", response1);

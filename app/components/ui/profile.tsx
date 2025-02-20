@@ -4,8 +4,9 @@ import React from "react";
 import { RepoCard } from "./repocard";
 import { LangCard } from "./repocard";
 import Chart from "../charts"
+import GitHubActivityPage from "../contributions";
 
-const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location="not mentioned",language,stars,reponame,urllink,createdate,updatedate}:any) => {
+const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location="not mentioned",language,stars,reponame,urllink,createdate,updatedate,email}:any) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">
@@ -43,10 +44,6 @@ const UserProfile = ({avatar,name,username,bio,followers,following,activedays,re
           <p className="text-lg font-bold">{repositories}</p>
           <p className="text-sm text-gray-400">Repositories</p>
         </div>
-        <div className="bg-gray-800 p-4 rounded-lg shadow-md col-span-2 md:col-span-1">
-          <p className="text-lg font-bold">{location}</p>
-          <p className="text-sm text-gray-400">Location</p>
-        </div>
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
           <p className="text-lg font-bold">{stars}</p>
           <p className="text-sm text-gray-400">total stars</p>
@@ -59,11 +56,20 @@ const UserProfile = ({avatar,name,username,bio,followers,following,activedays,re
           <p className="text-lg font-bold">{updatedate}</p>
           <p className="text-sm text-gray-400">Account Last updated</p>
         </div>
+        <div className="bg-gray-800 p-4 rounded-lg shadow-md col-span-2 md:col-span-1">
+          <p className="text-lg font-bold">{location}</p>
+          <p className="text-sm text-gray-400">Location</p>
+        </div>
+        <div className="bg-gray-800 p-4 rounded-lg shadow-md col-span-2 md:col-span-1">
+          <p className="text-lg font-bold">{email}</p>
+          <p className="text-sm text-gray-400">Email</p>
+        </div>
       </div>
       <div className="mt-6 text-center">
       <h2>Overall Language Stats </h2>
        <LangCard/>
        <Chart/>
+       <GitHubActivityPage/>
         <h2>Public Repositories </h2>
         <RepoCard/>
       </div>

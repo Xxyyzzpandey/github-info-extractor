@@ -14,6 +14,7 @@ interface UserDetails {
     activedays?:number;
     language?:string;
     stars?:number
+    email?:number
     updated_at?:Date;
     created_at?:Date;
   }
@@ -28,6 +29,11 @@ interface UserDetails {
   interface LangDetails{
     language:string,
     percentage:number
+  }
+  
+  interface ContributionDetails{
+      date:string,
+      count:number
   }
 
 interface UserState {
@@ -60,3 +66,13 @@ export const useUserStore = create<UserState >((set) => ({
     langDetails:[],
     setLangDetails:(details)=>set({langDetails:details}),
   }))
+
+  interface ContributionState {
+    contriDetails: ContributionDetails[];
+    setContributionDetails: (details: ContributionDetails[]) => void;
+  }
+  
+  export const useContributionStore = create<ContributionState>((set) => ({
+    contriDetails: [],
+    setContributionDetails: (details) => set({ contriDetails: details }),
+  }));

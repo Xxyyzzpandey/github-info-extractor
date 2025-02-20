@@ -20,8 +20,17 @@ async function Handler(req:NextRequest,res:NextResponse){
           const activeDays = new Set(
             events.map(event => new Date(event.created_at).toISOString().split("T")[0])
           );
-        
           console.log(`${username} was active on ${activeDays.size} different days.`);
+          const eventsByDate: Record<string, number> = events.reduce((acc, event) => {
+            const date = new Date(event.created_at).toISOString().split("T")[0]; // "YYYY-MM-DD"
+            acc[date] = (acc[date] || 0) + 1;
+            return acc;
+          }, {});
+      
+          // Format data for the chart
+          const chartData = Object.entries(eventsByDate).map(([date, count]) => ({ date, count }));
+      
+          return NextResponse.json(chartData, { status: 200 });
         }catch(error){
            alert("error in fetching")
            return
