@@ -8,7 +8,7 @@ function Card({reponame,urllink,language}:{reponame:string,urllink:string,langua
   </>
 }
 
-function LCard({language,percentage}:{language:String,percentage:number}){
+function LCard({language,percentage}:{language:string,percentage:number}){
   return<>
     <p className="mt-2 text-gray-300 text-sm md:text-lg">Language : {language}    percentage:{percentage} </p>
   </>

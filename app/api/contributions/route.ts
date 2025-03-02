@@ -33,7 +33,7 @@ async function Handler(req:NextRequest){
           return NextResponse.json(chartData, { status: 200 });
         }catch(error){
            alert("error in fetching")
-           return
+           return NextResponse.json(error,{status:401})
         }
     }
 

@@ -9,6 +9,7 @@ async function Repoinfo(req:NextRequest){
         const response=await axios.get(`https://api.github.com/users/${username}/repos?sort=stars&per_page=500`,{
             headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
           });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const repoData = response.data.map((repo:any) => ({
             name: repo.name,
             stars: repo.stargazers_count,

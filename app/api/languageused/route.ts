@@ -1,6 +1,6 @@
   
 import axios from "axios";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
   
 
 async function Handler(req:NextRequest){
