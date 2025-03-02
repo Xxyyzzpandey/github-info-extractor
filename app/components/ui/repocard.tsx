@@ -2,13 +2,13 @@
 import { useRepoStore } from "@/app/store/store"
 import { useLangStore } from "@/app/store/store";
 
-function Card({reponame,urllink,language}:any){
+function Card({reponame,urllink,language}:{reponame:string,urllink:string,language:string}){
   return<>
         <p className="mt-2 text-gray-300 text-sm md:text-lg">Repo Name : {reponame}    Language:{language} <br /> <a className="text-blue-600" href={urllink}>{urllink}</a></p>
   </>
 }
 
-function LCard({language,percentage}:any){
+function LCard({language,percentage}:{language:String,percentage:number}){
   return<>
     <p className="mt-2 text-gray-300 text-sm md:text-lg">Language : {language}    percentage:{percentage} </p>
   </>

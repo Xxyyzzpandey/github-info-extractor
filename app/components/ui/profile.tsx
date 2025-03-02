@@ -6,7 +6,7 @@ import { LangCard } from "./repocard";
 import Chart from "../charts"
 import GitHubActivityPage from "../contributions";
 
-const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location="not mentioned",language,stars,reponame,urllink,createdate,updatedate,email}:any) => {
+const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location="not mentioned",stars,createdate,updatedate,email}:any) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white px-4">

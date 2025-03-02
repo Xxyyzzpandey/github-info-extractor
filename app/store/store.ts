@@ -1,4 +1,3 @@
-import { details } from "motion/react-client";
 import {create} from "zustand"
 
 interface UserDetails {

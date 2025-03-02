@@ -2,7 +2,7 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 
-async function Userdetails(req:NextRequest,res:NextResponse){
+async function Userdetails(req:NextRequest){
      const {username}=await req.json();
      console.log(username)
      try{

@@ -3,7 +3,7 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
   
 
-async function Repoinfo(req:NextRequest,res:NextResponse){
+async function Repoinfo(req:NextRequest){
     const {username}=await req.json();
     try{
         const response=await axios.get(`https://api.github.com/users/${username}/repos?sort=stars&per_page=500`,{

@@ -19,7 +19,7 @@ const StarryBackground = () => {
   const {setLangDetails}=useLangStore()
   const {setContributionDetails}=useContributionStore();
 
-  const handleclick=async (e:any)=>{
+  const handleclick=async (e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLAnchorElement>)=>{
          e.preventDefault();
          setloading(true);
         try{
@@ -40,20 +40,20 @@ const StarryBackground = () => {
               setLangDetails(response3.data)
               setContributionDetails(response4.data);
               console.log("from second pafe",response4.data)
-              router.push("/pages/details");
             }else {
               console.error("Unexpected response:", response1);
               alert("Unexpected error occurred");
             }
-        }catch(error:any){
-            console.error("Request failed:", error);
-            if (error.response1) {
-              console.log("Error Response:", error.response1);
-              alert(error.response1.data.error || "Something went wrong");
-            } else {
-              alert("Network error or server issue");
-            }
+        }catch (error: unknown) {
+          console.error("Request failed:", error);
+          if (axios.isAxiosError(error)) {
+            console.log("Error Response:", error.response);
+            alert(error.response?.data?.error || "Something went wrong");
+          } else {
+            alert("Network error or server issue");
+          }
         }finally{
+          router.push("/pages/details");
           setloading(false)
         }
   }
