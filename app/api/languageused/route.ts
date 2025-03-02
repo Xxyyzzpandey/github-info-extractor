@@ -47,7 +47,7 @@ async function Handler(req:NextRequest){
       });
   
       const repos: { languages_url: string }[] = reposResponse.data;
-      let languageBytes: Record<string, number> = {};
+      const languageBytes: Record<string, number> = {};
   
       await Promise.all(
         repos.map(async (repo) => {

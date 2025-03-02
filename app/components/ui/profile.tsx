@@ -6,6 +6,7 @@ import { LangCard } from "./repocard";
 import Chart from "../charts"
 import GitHubActivityPage from "../contributions";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UserProfile = ({avatar,name,username,bio,followers,following,activedays,repositories,location="not mentioned",stars,createdate,updatedate,email}:any) => {
 
   return (
