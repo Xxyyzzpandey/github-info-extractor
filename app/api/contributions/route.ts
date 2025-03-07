@@ -16,7 +16,8 @@ async function Handler(req:NextRequest){
           }
         
           // Extract unique dates of activity
-          // eslint-disable-next-line no-unused-vars
+
+         // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const activeDays = new Set(
             events.map(event => new Date(event.created_at).toISOString().split("T")[0])
           );

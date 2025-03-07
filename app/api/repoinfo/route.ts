@@ -18,7 +18,7 @@ async function Repoinfo(req:NextRequest){
           }));
          // console.log(repoData)
           return NextResponse.json(repoData,{status:200});
-    // eslint-disable-next-line no-unused-vars      
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars      
     }catch(error){
         //console.log("github server error " ,error)
         return NextResponse.json(
