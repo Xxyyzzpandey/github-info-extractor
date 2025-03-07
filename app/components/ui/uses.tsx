@@ -13,10 +13,10 @@ export default function Use(){
         <h1 className="text-2xl font-bold mb-4">Welcome to our website</h1>
         <ul className="text-gray-700 text-left space-y-2">
         <li>🌐 Visit our website.</li>
-        <li>🖱️ Click on "Enter Username".</li>
+        <li>🖱️ Click on &quot;Enter Username&quot;.</li>
         <li>⌨️ Type your GitHub username in the input field.</li>
-        <li>🔍 Press the "Submit" button.</li>
-        <li>📄 Your public GitHub information will be displayed            in a simple format.</li>
+        <li>🔍 Press the &quot;Submit&quot; button.</li>
+        <li>📄 Your public GitHub information will be displayed in a simple format.</li>
         </ul>
       </div>
     </div>
