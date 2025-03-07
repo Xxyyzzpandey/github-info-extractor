@@ -6,7 +6,7 @@ import { useContributionStore } from "../store/store";
 const GitHubActivityPage = () => {
    
     const {contriDetails}=useContributionStore();
-    console.log("from contribution pageg",contriDetails);
+    //console.log("from contribution pageg",contriDetails);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">

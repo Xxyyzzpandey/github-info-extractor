@@ -7,7 +7,7 @@ const COLORS = ["#FF5733", "#FFBD33", "#33FF57", "#3357FF", "#FF33A1"];
 
 export default function PieChartComponent() {
   const { langDetails } = useLangStore();
-  console.log(langDetails); // Debugging
+  //console.log(langDetails); // Debugging
 
   // Convert data from { language, percentage } to { name, value }
   const formattedData = langDetails.map((item) => ({

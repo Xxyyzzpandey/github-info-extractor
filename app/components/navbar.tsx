@@ -21,22 +21,16 @@ function Navbar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="Home">
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink href="/">Home</HoveredLink>
-            <HoveredLink href="/pages/secondpage">Input page</HoveredLink>
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Contact">
+        <MenuItem setActive={setActive} active={active} item="Input-page">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/">about us</HoveredLink>
-            <HoveredLink href="/pages/secondpage">Contact us</HoveredLink>
-            <HoveredLink href="/pages/secondpage">Feedback</HoveredLink>
+          <HoveredLink href="/pages/secondpage">Input page</HoveredLink>
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="credentials">
+        <MenuItem setActive={setActive} active={active} item="Uses">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">sign in</HoveredLink>
-            <HoveredLink href="/individual">sign up</HoveredLink>
-            <HoveredLink href="/team">logout</HoveredLink>
-            <HoveredLink href="/enterprise">share</HoveredLink>
+            <HoveredLink href="/pages/use">how to use</HoveredLink>
           </div>
         </MenuItem>
       </Menu>

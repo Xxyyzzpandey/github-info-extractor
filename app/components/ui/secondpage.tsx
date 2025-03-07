@@ -39,21 +39,23 @@ const StarryBackground = () => {
               setRepoDetails(response2.data)
               setLangDetails(response3.data)
               setContributionDetails(response4.data);
-              console.log("from second pafe",response4.data)
+             // console.log("from second pafe",response4.data)
+              router.push("/pages/details");
+              setloading(false)
             }else {
               console.error("Unexpected response:", response1);
               alert("Unexpected error occurred");
+              setloading(false)
             }
         }catch (error: unknown) {
           console.error("Request failed:", error);
           if (axios.isAxiosError(error)) {
-            console.log("Error Response:", error.response);
+            //console.log("Error Response:", error.response);
             alert(error.response?.data?.error || "Something went wrong");
           } else {
             alert("Network error or server issue");
           }
         }finally{
-          router.push("/pages/details");
           setloading(false)
         }
   }

@@ -16,10 +16,10 @@ async function Repoinfo(req:NextRequest){
             language: repo.language,
             url:repo.url
           }));
-          console.log(repoData)
+         // console.log(repoData)
           return NextResponse.json(repoData,{status:200});
     }catch(error){
-        console.log("github server error " ,error)
+        //console.log("github server error " ,error)
         return NextResponse.json(
             { error: "Failed to fetch repo details"},
             { status: 500 }

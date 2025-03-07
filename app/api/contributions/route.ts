@@ -12,7 +12,6 @@ async function Handler(req:NextRequest){
           const events =  response.data;
 
           if (!Array.isArray(events)) {
-            console.log("Error fetching events.");
             return;
           }
         
@@ -20,7 +19,7 @@ async function Handler(req:NextRequest){
           const activeDays = new Set(
             events.map(event => new Date(event.created_at).toISOString().split("T")[0])
           );
-          console.log(`${username} was active on ${activeDays.size} different days.`);
+          //console.log(`${username} was active on ${activeDays.size} different days.`);
           const eventsByDate: Record<string, number> = events.reduce((acc, event) => {
             const date = new Date(event.created_at).toISOString().split("T")[0]; // "YYYY-MM-DD"
             acc[date] = (acc[date] || 0) + 1;
